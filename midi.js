@@ -54,17 +54,18 @@ function onMIDIMessage(event) {
     // note on
     if(event.data[0].toString(16)[0] == "9") {
         //can get rid of midi
-        midiNoteOnEvent(midiToNote(event.data[1]), event.data[2]);
+        midiNoteOnEvent(event.data[1], event.data[2]);
     } 
 }
 
 
 //heres the thing to call
-//pitch in form 'C3', 'Ab4', etc.
+//pitch any integer, middle C (C4) is 60, every 12 up or down is an octave
+// midiToNote puts it in form 'C3', 'Ab4', etc.
 //velocity (volume) goes from 0 to 127 by default
 let midiNoteOnEvent = (pitch, velocity) => {
     let str = "";
-    str += "pitch: " + pitch;
+    str += "pitch: " + pitch + "(" + midiToNote(pitch) + ")";
     str += " velocity: " + velocity;
     const p = document.createElement("p");
     p.appendChild(document.createTextNode(str));
