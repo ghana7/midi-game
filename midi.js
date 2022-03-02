@@ -71,4 +71,6 @@ let midiNoteOnEvent = (pitch, velocity) => {
     p.appendChild(document.createTextNode(str));
     midiEventsDiv.innerHTML = "";
     midiEventsDiv.appendChild(p);
+
+    doNoteAttack(pitch, velocity);
 }
